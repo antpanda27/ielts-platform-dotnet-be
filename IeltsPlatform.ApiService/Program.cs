@@ -2,6 +2,7 @@ using Amazon;
 using Amazon.Extensions.NETCore.Setup;
 using IeltsPlatform.ApiService.Properties.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +23,14 @@ builder.Services.AddAWSService<Amazon.DynamoDBv2.IAmazonDynamoDB>();
 // Add services to the container.
 builder.Services.AddProblemDetails();
 
-builder.Services.AddControllers();
+// Controllers
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        // convert enums to strings in JSON
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    }); ;
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 

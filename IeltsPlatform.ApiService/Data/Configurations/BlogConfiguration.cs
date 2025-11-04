@@ -12,6 +12,14 @@ namespace IeltsPlatform.ApiService.Data.Configurations
             builder.Property(b => b.Blog_name)
                    .IsRequired()
                    .HasMaxLength(200);
+            builder.Property(b => b.Blog_status)
+                        .HasConversion<string>()
+                        .HasColumnName("Blog_status")
+                        .HasMaxLength(50);
+            builder.Property(b => b.Blog_theme)
+                        .HasConversion<string>()
+                        .HasColumnName("Blog_theme")
+                        .HasMaxLength(50);
         }
     }
 }
