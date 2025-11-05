@@ -4,9 +4,9 @@ namespace IeltsPlatform.ApiService.DTOs.Blog
 {
     public record CreateBlogRequest
     {
-        public required string Blog_name { get; init; }
-        public required string Blog_content { get; init; }
-        public Entities.Blog.Status Blog_status { get; init; }
-        public required Entities.Blog.Theme Blog_theme { get; init; }
+        public required string BlogName { get; init; }
+        public required string BlogContent { get; init; }
+        public Entities.Blog.Status BlogStatus { get; init; }
+        public required Entities.Blog.Theme BlogTheme { get; init; }
     }
 }

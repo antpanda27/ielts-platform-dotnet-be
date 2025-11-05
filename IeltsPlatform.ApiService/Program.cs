@@ -1,4 +1,5 @@
 using Amazon;
+using Amazon.DynamoDBv2.DataModel;
 using Amazon.Extensions.NETCore.Setup;
 using IeltsPlatform.ApiService.Properties.Data;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ var awsOptions = builder.Configuration.GetAWSOptions();
 builder.Services.AddDefaultAWSOptions(awsOptions);
 builder.Services.AddAWSService<Amazon.S3.IAmazonS3>();
 builder.Services.AddAWSService<Amazon.DynamoDBv2.IAmazonDynamoDB>();
+builder.Services.AddScoped<IDynamoDBContext, DynamoDBContext>();
 
 // Add services to the container.
 builder.Services.AddProblemDetails();
